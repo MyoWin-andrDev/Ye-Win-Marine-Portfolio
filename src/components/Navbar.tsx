@@ -45,14 +45,13 @@ export default function Navbar() {
     const targetId = href.substring(1);
     const element = document.getElementById(targetId);
     if (element) {
-      const offset = 80; // Navbar height
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      // Small delay to allow menu to start closing for a smoother transition
+      setTimeout(() => {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
     }
   };
 
